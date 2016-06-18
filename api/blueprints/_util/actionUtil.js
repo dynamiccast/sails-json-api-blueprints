@@ -48,7 +48,7 @@ module.exports = {
 
     // Get values using the model identity as resource identifier
     var values = req.body.data.attributes || {};
-    values.id = req.body.id;
+    values.id = req.allParams()['id'];
 
     // Omit built-in runtime config (like query modifiers)
     values = omit( values, blacklist || [] );
@@ -70,7 +70,7 @@ module.exports = {
    */
   parsePk: function ( req ) {
 
-    var pk = req.options.id || ( req.options.where && req.options.where.id ) || req.param( 'id' );
+    return req.options.id || ( req.options.where && req.options.where.id ) || req.allParams()['id'];
   },
 
   /**

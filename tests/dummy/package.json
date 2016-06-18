@@ -24,9 +24,15 @@
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9"
   },
+  "devDependencies": {
+    "supertest": "^1.2.0",
+    "mocha": "2.4.5",
+    "jsonapi-validator": "1.0.1"
+  },
   "scripts": {
     "debug": "node debug app.js",
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "mocha test/bootstrap.test.js test/integration/**/*.test.js"
   },
   "main": "app.js",
   "repository": {

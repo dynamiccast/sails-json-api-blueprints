@@ -70,7 +70,7 @@ module.exports = {
    */
   parsePk: function ( req ) {
 
-    var pk = req.options.id || ( req.options.where && req.options.where.id ) || req.param( 'id' );
+    return req.options.id || ( req.options.where && req.options.where.id ) || req.allParams()['id'];
   },
 
   /**

@@ -58,7 +58,7 @@ describe('UserController', function() {
         .expect(validateJSONapi)
         .expect({
           'data': [{
-            'id': 1,
+            'id': "1",
             'type': 'users',
             'attributes': {
               'email': 'test@jsonapi.com',
@@ -187,7 +187,7 @@ describe('UserController', function() {
 
     var userToUpdate = {
       'data': {
-        'id': 1,
+        'id': "1",
         'type': 'users',
         'attributes': {
           'email': 'test@jsonapi.com',

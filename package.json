@@ -1,7 +1,7 @@
 {
   "name": "sails-json-api-blueprints",
-  "version": "0.1.0",
-  "description": "lueprints to turn a Sails.js API into a JSON API",
+  "version": "0.1.1",
+  "description": "Blueprints to turn a Sails.js API into a JSON API",
   "main": "index.js",
   "scripts": {
     "test": "cd tests/dummy ; npm test"

@@ -1,6 +1,5 @@
 {
   "name": "dummy",
-  "private": true,
   "version": "0.0.0",
   "description": "a Sails application",
   "keywords": [],

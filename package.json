@@ -25,5 +25,8 @@
   "dependencies": {
     "lodash": "4.13.1",
     "pluralize": "2.0.0"
+  },
+  "sails": {
+    "isHook": true
   }
 }

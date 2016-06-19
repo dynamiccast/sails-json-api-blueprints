@@ -19,9 +19,6 @@ module.exports.models = {
   ***************************************************************************/
   // connection: 'localDiskDb',
 
-  autoCreatedAt: false,
-  autoUpdatedAt: false,
-
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *

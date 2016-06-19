@@ -8,7 +8,7 @@
 "use strict";
 
 var pluralize   = require('pluralize');
-var updateBlueprint = require('../blueprints/update');
+var updateBlueprint = require('../../node_modules/sails-json-api-blueprints/lib/api/blueprints/update');
 
 module.exports = {
 

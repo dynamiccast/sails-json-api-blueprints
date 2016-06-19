@@ -24,7 +24,9 @@
   "homepage": "https://github.com/dynamiccast/sails-json-api-blueprints#readme",
   "dependencies": {
     "lodash": "3.10.1",
-    "pluralize": "2.0.0"
+    "path": "^0.12.7",
+    "pluralize": "^2.0.0",
+    "util": "^0.10.3"
   },
   "sails": {
     "isHook": true

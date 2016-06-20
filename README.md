@@ -1,5 +1,7 @@
 # Sails-JSON-API-Blueprints
 
+[![NPM version](https://badge.fury.io/js/sails-json-api-blueprints.svg)](http://badge.fury.io/js/sails-json-api-blueprints) &nbsp;  [![Build Status](https://travis-ci.org/dynamiccast/sails-json-api-blueprints.svg?branch=travis-ci)](https://travis-ci.org/dynamiccast/sails-json-api-blueprints)
+
 Sails hook to automatically turn a Sails.js API into a [JSON API](http://jsonapi.org/) compatible interface.
 
 ### This hook is still in intense development. See the *Roadmap* section for more information on what is yet to be implemented

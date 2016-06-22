@@ -39,8 +39,8 @@ Please note the following :
   - [ ] Pubsub integration
   - [ ] Provide a service to serialize as JSON API for custom endpoints
 - Repository
-  - [ ] Add tests on travis
-  - [ ] Provide status on the build on Github
+  - [X] Add tests on travis
+  - [X] Provide status on the build on Github
 
 # Tests
 

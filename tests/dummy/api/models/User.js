@@ -9,6 +9,8 @@ module.exports = {
 
   attributes: {
 
-  }
-};
+  },
 
+  autoCreatedAt: false,
+  autoUpdatedAt: false
+};

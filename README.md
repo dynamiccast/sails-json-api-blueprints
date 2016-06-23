@@ -45,6 +45,8 @@ Please note the following :
 
 Simply run `npm test`
 
+Tests expect the database to be empty. Local disk is used in the dummy app and can be deleted with `rm tests/dummy/.tmp/localDiskDb.db`.
+
 # Thanks
 
 This work is greatly inspired from https://github.com/mphasize/sails-generate-ember-blueprints

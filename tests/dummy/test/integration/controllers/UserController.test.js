@@ -87,7 +87,7 @@ describe('UserController', function() {
       };
 
       userCreated = userToCreate;
-      userCreated.data.id = 2;
+      userCreated.data.id = "2";
 
       request(sails.hooks.http.app)
         .post('/users')

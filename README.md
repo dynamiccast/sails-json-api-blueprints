@@ -17,7 +17,6 @@ npm install --save sails-json-api-blueprints
 Please note the following :
 - Being a set of blueprints this only works if `sails.config.blueprints.rest` is set to true (is it by default)
 - `sails.config.blueprints.pluralize` will be set to true to match the JSON API specification
-- Auto `createdAt` and `UpdatedAt` fields will be disable. These are not JSON API compliant because of their camel case name. See [open issue](https://github.com/dynamiccast/sails-json-api-blueprints/issues/3).
 
 # Roadmap
 

@@ -35,7 +35,7 @@ Please note the following :
   - [ ] Pagination
   - [ ] Filtering
 - Sails integration
-  - [ ] Allow the use of auto CreatedAt and UpdatedAt (see #3)
+  - [X] Allow the use of auto CreatedAt and UpdatedAt (see #3)
   - [ ] Pubsub integration
   - [ ] Provide a service to serialize as JSON API for custom endpoints
 - Repository

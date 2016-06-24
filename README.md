@@ -6,6 +6,8 @@ Sails hook to automatically turn a Sails.js API into a [JSON API](http://jsonapi
 
 ### This hook is still in intense development. See the *Roadmap* section for more information on what is yet to be implemented
 
+While this module will provide your API with a generic implementation of JSON API, it was primarily intented to ease the communication between Sails.js and Ember.js. Ember works by default with JSON API. Here is a demonstration of *sails-json-api-blueprints* working with an Ember application : https://github.com/dynamiccast/sails-ember-super-rentals-example
+
 # Install
 
 Being a sails hook. There is not much thing to do to make your sails app JSON API compatible. all you have to do is install this node module.

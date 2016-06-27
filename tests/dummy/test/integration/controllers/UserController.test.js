@@ -229,4 +229,27 @@ describe('UserController', function() {
     });
   });
 
+  describe("Query ?me=true on GET /users", function() {
+    it("Should return fake connected user", function(done) {
+
+      var userReturned = {
+        'data': {
+          'attributes': {
+            'email': 'root@jsonapi.com',
+            'first-name':'User',
+            'last-name':'Root'
+          },
+          'id': "0",
+          'type':'users'
+        }
+      };
+
+      request(sails.hooks.http.app)
+        .get('/users?me=true')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect(userReturned)
+        .end(done);
+    });
+  });
 });

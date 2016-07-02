@@ -5,8 +5,6 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var createRecord = require('sails-json-api-blueprints/lib/api/blueprints/create');
-
 module.exports = {
 
   create: function(req, res) {
@@ -17,7 +15,7 @@ module.exports = {
 
     req.body.data.attributes.name = req.body.data.attributes.name.trim();
 
-    return createRecord(req, res);
+    return JsonApiService.createRecord(req, res);
   }
 
 };

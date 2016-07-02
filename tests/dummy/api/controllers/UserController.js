@@ -5,26 +5,22 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-var findRecords = require('sails-json-api-blueprints/lib/api/blueprints/find');
-
 module.exports = {
 
   find: function(req, res) {
 
     if (req.allParams()["me"] === "true") {
-      return res.ok({
-        'data': {
-          'attributes': {
-            'email': 'root@jsonapi.com',
-            'first-name':'User',
-            'last-name':'Root'
-          },
-          'id': "0",
-          'type':'users'
-        }
+
+      var me = JsonApiService.serialize('users', {
+        id: '0',
+        'email': 'root@jsonapi.com',
+        'first-name':'User',
+        'last-name':'Root'
       });
+
+      return res.ok(me);
     }
 
-    return findRecords(req, res);
+    return JsonApiService.findRecords(req, res);
   }
 };

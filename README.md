@@ -20,6 +20,29 @@ Please note the following :
 - Being a set of blueprints this only works if `sails.config.blueprints.rest` is set to true (is it by default)
 - `sails.config.blueprints.pluralize` will be set to true to match the JSON API specification
 
+# Usage
+
+With the hook being installed, all your auto generated controller actions will be JSON API compliant.
+This module also injects a service available as `JsonApiService` in your controllers to help you deal with JSON API.
+
+## Serialize data
+
+As shown in [tests/dummy/api/controllers/UserController.js:14](https://github.com/dynamiccast/sails-json-api-blueprints/blob/master/tests/dummy/api/controllers/UserController.js#L14), `JsonApiService.serialize` allows to serialize any waterline data into a JSON API compliant format. Just call :
+
+````
+JsonApiService(modelName, DataObject);
+````
+
+## Call blueprints from custom action
+
+As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.com/dynamiccast/sails-json-api-blueprints/blob/master/tests/dummy/api/controllers/UserController.js#L24), `JsonApiService` proxies blueprints to be accessible from any controller. Simply call the following with `req` and `res` as parameter:
+
+- `findRecords` GET /{model}
+- `findOneRecord` GET /{model}/{id}
+- `createRecord` POST /{model}
+- `destroyOneRecord` DELETE /{model}
+- `updateOneRecord` PATH /{model}/{id}
+
 # Roadmap
 
 - JSON API implementation

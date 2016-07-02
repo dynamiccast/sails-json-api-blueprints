@@ -41,7 +41,7 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
 - `findOneRecord` GET /{model}/{id}
 - `createRecord` POST /{model}
 - `destroyOneRecord` DELETE /{model}
-- `updateOneRecord` PATH /{model}/{id}
+- `updateOneRecord` PATCH /{model}/{id}
 
 # Roadmap
 

@@ -18,7 +18,7 @@ module.exports = {
         'last-name':'Root'
       });
 
-      return res.ok(me);
+      return res.json(me);
     }
 
     return JsonApiService.findRecords(req, res);

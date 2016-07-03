@@ -16,6 +16,23 @@ module.exports = {
     req.body.data.attributes.name = req.body.data.attributes.name.trim();
 
     return JsonApiService.createRecord(req, res);
+  },
+
+  find: function(req, res) {
+
+    if (req.allParams()['invalid'] === "true") {
+      return res.badRequest("Something is rotten in the state of denmark");
+    }
+
+    if (req.allParams()['forbidden'] === "true") {
+      return res.forbidden("You don't wanna do that");
+    }
+
+    if (req.allParams()['error'] === "true") {
+      return res.serverError('A super massive black hole just swallowed the server');
+    }
+
+    return JsonApiService.findRecords(req. res);
   }
 
 };

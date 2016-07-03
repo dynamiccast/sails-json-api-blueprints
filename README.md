@@ -19,6 +19,7 @@ npm install --save sails-json-api-blueprints
 Please note the following :
 - Being a set of blueprints this only works if `sails.config.blueprints.rest` is set to true (is it by default)
 - `sails.config.blueprints.pluralize` will be set to true to match the JSON API specification
+- Default responses will be overridden to respond with valid JSON API errors
 
 # Usage
 
@@ -27,7 +28,9 @@ This module also injects a service available as `JsonApiService` in your control
 
 ## Serialize data
 
-As shown in [tests/dummy/api/controllers/UserController.js:14](https://github.com/dynamiccast/sails-json-api-blueprints/blob/master/tests/dummy/api/controllers/UserController.js#L14), `JsonApiService.serialize` allows to serialize any waterline data into a JSON API compliant format. Just call :
+`res.ok()` and `res.created()` will handle JSON API serialization for you. Simply call them as usual when you are done with your custom action.
+
+As shown in [tests/dummy/api/controllers/UserController.js:14](https://github.com/dynamiccast/sails-json-api-blueprints/blob/master/tests/dummy/api/controllers/UserController.js#L14), `JsonApiService.serialize` also allows to serialize any waterline data into a JSON API compliant format. Just call :
 
 ````
 JsonApiService(modelName, DataObject);
@@ -50,7 +53,7 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
   - [X] POST resource
   - [X] DELETE resource
   - [X] PATCH resource
-  - [ ] Return proper error if any
+  - [X] Return proper error if any
   - [ ] Relationships
   - [ ] Compound Document
   - [ ] Links
@@ -62,6 +65,7 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
   - [X] Allow the use of auto CreatedAt and UpdatedAt (see #3)
   - [ ] Pubsub integration
   - [X] Provide a service to serialize as JSON API for custom endpoints
+  - [ ] Compatible with waterline data validation
 - Repository
   - [X] Add tests on travis
   - [X] Provide status on the build on Github

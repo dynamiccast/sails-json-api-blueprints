@@ -51,7 +51,7 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
   - [X] POST resource
   - [X] DELETE resource
   - [X] PATCH resource
-  - [ ] Return proper error if any
+  - [X] Return proper error if any
   - [ ] Relationships
   - [ ] Compound Document
   - [ ] Links

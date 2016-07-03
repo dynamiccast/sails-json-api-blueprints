@@ -17,4 +17,14 @@ describe('Error handling', function() {
         .end(done);
     });
   });
+
+  describe('GET /users/42', function() {
+    it('Should return 404', function(done) {
+      request(sails.hooks.http.app)
+        .get('/users/42')
+        .expect(404)
+        .expect(validateJSONapi)
+        .end(done);
+    });
+  });
 });

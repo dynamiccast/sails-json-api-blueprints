@@ -55,7 +55,8 @@ describe('Error handling', function() {
           'errors': [
             {
               status: "400",
-              title: 'Bad request'
+              title: 'Bad request',
+              detail: "Something is rotten in the state of denmark"
             }
           ]
         })

@@ -21,7 +21,7 @@ module.exports = {
   find: function(req, res) {
 
     if (req.allParams()['invalid'] === "true") {
-      return res.badRequest();
+      return res.badRequest("Something is rotten in the state of denmark");
     }
 
     if (req.allParams()['forbidden'] === "true") {

@@ -24,6 +24,21 @@ describe('Error handling', function() {
         .get('/users/42')
         .expect(404)
         .expect(validateJSONapi)
+
+  describe('GET categories?invalid=true', function() {
+    it('Should return 400', function(done) {
+      request(sails.hooks.http.app)
+        .get('/categories?invalid=true')
+        .expect(400)
+        .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "400",
+              title: 'Bad request'
+            }
+          ]
+        })
         .end(done);
     });
   });

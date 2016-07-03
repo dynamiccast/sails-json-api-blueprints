@@ -16,6 +16,15 @@ module.exports = {
     req.body.data.attributes.name = req.body.data.attributes.name.trim();
 
     return JsonApiService.createRecord(req, res);
+  },
+
+  find: function(req, res) {
+
+    if (req.allParams()['invalid'] === "true") {
+      return res.badRequest();
+    }
+
+    return JsonApiService.findRecords(req. res);
   }
 
 };

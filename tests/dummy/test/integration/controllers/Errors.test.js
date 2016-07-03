@@ -62,4 +62,22 @@ describe('Error handling', function() {
         .end(done);
     });
   });
+
+  describe('GET categories?forbidden=true', function() {
+    it('Should return 403', function(done) {
+      request(sails.hooks.http.app)
+        .get('/categories?forbidden=true')
+        .expect(403)
+        .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "403",
+              title: 'Forbidden'
+            }
+          ]
+        })
+        .end(done);
+    });
+  });
 });

@@ -24,6 +24,10 @@ module.exports = {
       return res.badRequest();
     }
 
+    if (req.allParams()['forbidden'] === "true") {
+      return res.forbidden();
+    }
+
     return JsonApiService.findRecords(req. res);
   }
 

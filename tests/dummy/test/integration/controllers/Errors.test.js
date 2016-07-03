@@ -14,6 +14,14 @@ describe('Error handling', function() {
         .get('/fake')
         .expect(404)
         .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "404",
+              title: 'Resource not found'
+            }
+          ]
+        })
         .end(done);
     });
   });
@@ -24,6 +32,18 @@ describe('Error handling', function() {
         .get('/users/42')
         .expect(404)
         .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "404",
+              title: 'Resource not found',
+              detail: 'No record found with the specified id.'
+            }
+          ]
+        })
+        .end(done);
+    });
+  });
 
   describe('GET categories?invalid=true', function() {
     it('Should return 400', function(done) {

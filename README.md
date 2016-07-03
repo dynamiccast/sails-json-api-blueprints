@@ -28,7 +28,9 @@ This module also injects a service available as `JsonApiService` in your control
 
 ## Serialize data
 
-As shown in [tests/dummy/api/controllers/UserController.js:14](https://github.com/dynamiccast/sails-json-api-blueprints/blob/master/tests/dummy/api/controllers/UserController.js#L14), `JsonApiService.serialize` allows to serialize any waterline data into a JSON API compliant format. Just call :
+`res.ok()` and `res.created()` will handle JSON API serialization for you. Simply call them as usual when you are done with your custom action.
+
+As shown in [tests/dummy/api/controllers/UserController.js:14](https://github.com/dynamiccast/sails-json-api-blueprints/blob/master/tests/dummy/api/controllers/UserController.js#L14), `JsonApiService.serialize` also allows to serialize any waterline data into a JSON API compliant format. Just call :
 
 ````
 JsonApiService(modelName, DataObject);

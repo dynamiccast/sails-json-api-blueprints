@@ -63,6 +63,7 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
   - [X] Allow the use of auto CreatedAt and UpdatedAt (see #3)
   - [ ] Pubsub integration
   - [X] Provide a service to serialize as JSON API for custom endpoints
+  - [ ] Compatible with waterline data validation
 - Repository
   - [X] Add tests on travis
   - [X] Provide status on the build on Github

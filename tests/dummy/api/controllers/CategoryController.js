@@ -28,6 +28,10 @@ module.exports = {
       return res.forbidden();
     }
 
+    if (req.allParams()['error'] === "true") {
+      return res.serverError('A super massive black hole just swallowed the server');
+    }
+
     return JsonApiService.findRecords(req. res);
   }
 

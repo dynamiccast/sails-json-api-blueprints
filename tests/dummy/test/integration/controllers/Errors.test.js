@@ -80,4 +80,23 @@ describe('Error handling', function() {
         .end(done);
     });
   });
+
+  describe('GET categories?error=true', function() {
+    it('Should return 500', function(done) {
+      request(sails.hooks.http.app)
+        .get('/categories?error=true')
+        .expect(500)
+        .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "500",
+              title: 'Internal server error',
+              detail: 'A super massive black hole just swallowed the server'
+            }
+          ]
+        })
+        .end(done);
+    });
+  });
 });

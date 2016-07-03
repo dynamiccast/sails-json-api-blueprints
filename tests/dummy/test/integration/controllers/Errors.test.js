@@ -73,7 +73,8 @@ describe('Error handling', function() {
           'errors': [
             {
               status: "403",
-              title: 'Forbidden'
+              title: 'Forbidden',
+              detail: "You don't wanna do that"
             }
           ]
         })

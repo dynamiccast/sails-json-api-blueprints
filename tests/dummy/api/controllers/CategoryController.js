@@ -25,7 +25,7 @@ module.exports = {
     }
 
     if (req.allParams()['forbidden'] === "true") {
-      return res.forbidden();
+      return res.forbidden("You don't wanna do that");
     }
 
     if (req.allParams()['error'] === "true") {

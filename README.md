@@ -19,6 +19,7 @@ npm install --save sails-json-api-blueprints
 Please note the following :
 - Being a set of blueprints this only works if `sails.config.blueprints.rest` is set to true (is it by default)
 - `sails.config.blueprints.pluralize` will be set to true to match the JSON API specification
+- Default responses will be overridden to respond with valid JSON API errors
 
 # Usage
 

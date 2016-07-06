@@ -45,6 +45,25 @@ describe('Error handling', function() {
     });
   });
 
+  describe('Delete invalid user /users/42', function() {
+    it('Should return 404', function (done) {
+      request(sails.hooks.http.app)
+        .delete('/users/42')
+        .expect(404)
+        .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "404",
+              title: 'Resource not found',
+              detail: 'No record found with the specified id.'
+            }
+          ]
+        })
+        .end(done);
+    });
+  });
+
   describe('GET categories?invalid=true', function() {
     it('Should return 400', function(done) {
       request(sails.hooks.http.app)

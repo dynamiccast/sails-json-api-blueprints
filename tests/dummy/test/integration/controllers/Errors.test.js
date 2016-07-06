@@ -166,3 +166,35 @@ describe('Error handling', function() {
     });
   });
 });
+
+describe('Submit invalid data', function() {
+  describe('POST invalid /users ', function() {
+    it('Should return 400', function (done) {
+
+      request(sails.hooks.http.app)
+        .post('/users')
+        .send({
+          data: {
+            foo: {
+
+            }
+          }
+        })
+        .expect(400)
+        .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "400",
+              title: 'Bad request',
+              detail: 'Invalid JSON API data',
+              links: {
+                self: 'http://jsonapi.org/format/'
+              }
+            }
+          ]
+        })
+        .end(done)
+    });
+  });
+});

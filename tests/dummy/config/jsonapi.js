@@ -26,5 +26,6 @@ module.exports.jsonapi = {
    * Default is undefined, that is to say untouched
    *
    */
-  attributesSerializedCase: 'kebab-case'
+  attributesSerializedCase: 'kebab-case', // As it should be in the JSON structure
+  attributesDeserializedCase: 'camelCase' // Ad it should be in Sails' model definitions
 };

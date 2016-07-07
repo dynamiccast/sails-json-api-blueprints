@@ -46,6 +46,30 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
 - `destroyOneRecord` DELETE /{model}
 - `updateOneRecord` PATCH /{model}/{id}
 
+## Customize serialized JSON models' attributes keys case
+
+While JSON API recommends multiple words variable to use a '-' as separator (http://jsonapi.org/recommendations/#naming) *sails-json-api-blueprints* remains open to `kebab-case` (the preferred), `snake_case`, `camelCase` or simply no change at all during serialization.
+
+In a `config/jsonapi.js`, add the following key to customize behavior:
+
+````
+attributesSerializedCase: 'kebab-case', // Default is undefined, a.k.a no tranformation during serialization
+````
+
+This will output JSON with attributes keys formatted in 'kebab-case'.
+
+## Have a different sails models' attributes keys case than JSON payload
+
+Sails Model attributes keys can follow a different naming convention than the JSON payload. In this case, *sails-json-api-blueprints* should be aware of that when deserializing data.
+
+In a `config/jsonapi.js`, add the following key to customize behavior:
+
+````
+attributesDeserializedCase: 'camelCase', // Default is undefined, a.k.a no tranformation during serialization
+````
+
+This will expect sails Model attributes keys to follow the camelCase naming convention.
+
 # Roadmap
 
 - JSON API implementation

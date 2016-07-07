@@ -9,13 +9,16 @@ module.exports = {
 
   attributes: {
     email: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     firstName: {
-      type: 'string'
+      type: 'string',
+      required: true
     },
     lastName: {
-      type: 'string'
+      type: 'string',
+      required: true
     }
   },
 

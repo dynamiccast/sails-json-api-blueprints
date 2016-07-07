@@ -8,7 +8,15 @@
 module.exports = {
 
   attributes: {
-
+    email: {
+      type: 'string'
+    },
+    firstName: {
+      type: 'string'
+    },
+    lastName: {
+      type: 'string'
+    }
   },
 
   autoCreatedAt: false,

@@ -101,4 +101,38 @@ describe('Error handling', function() {
         .end(done);
     });
   });
+
+  describe('POST /users with invalid attributes', function() {
+    it('Should return 400 with error details', function (done) {
+
+      var userToCreate = {
+        'data': {
+          'attributes': {
+            'email': 'test@jsonapi.com',
+            'first-name':'a', // This is invalid. Minimum length is 3
+            'last-name':'api'
+          },
+          'type':'users'
+        }
+      };
+
+      request(sails.hooks.http.app)
+        .post('/users')
+        .send(userToCreate)
+        .expect(400)
+        .expect(validateJSONapi)
+        .expect({
+          "errors": [
+            {
+              "detail": "\"minLength\" validation rule failed for input: 'a'\nSpecifically, it threw an error.  Details:\n undefined",
+              "source": {
+                "pointer": "data/attributes/first-name"
+              }
+            }
+          ]
+        })
+        .end(done);
+    });
+  });
+
 });

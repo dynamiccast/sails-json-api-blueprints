@@ -22,7 +22,8 @@
     "pluralize": "2.0.0",
     "rc": "1.0.1",
     "sails": "~0.12.3",
-    "sails-disk": "~0.10.9"
+    "sails-disk": "~0.10.9",
+    "sails-hook-validation": "^0.4.6"
   },
   "devDependencies": {
     "supertest": "^1.2.0",

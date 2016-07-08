@@ -10,14 +10,20 @@ module.exports = {
   attributes: {
     email: {
       type: 'string',
+      email: true,
+      unique: true,
       required: true
     },
     firstName: {
       type: 'string',
+      minLength: 2,
+      maxLength: 32,
       required: true
     },
     lastName: {
       type: 'string',
+      minLength: 3,
+      maxLength: 32,
       required: true
     }
   },

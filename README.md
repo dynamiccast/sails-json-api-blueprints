@@ -46,6 +46,13 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
 - `destroyOneRecord` DELETE /{model}
 - `updateOneRecord` PATCH /{model}/{id}
 
+## Data validation
+
+This module is compatible with default Sails.js waterline validations and *sails-hook-validation*. It will produce a JSON API error compliant object.
+
+When a validation error object is returned by Waterline, you can reject the request with `res.invalid(err)` where `err` is your response object.
+`res.negociate(err)` will also forward the request to the `invalid` response as expected.
+
 ## Customize serialized JSON models' attributes keys case
 
 While JSON API recommends multiple words variable to use a '-' as separator (http://jsonapi.org/recommendations/#naming) *sails-json-api-blueprints* remains open to `kebab-case` (the preferred), `snake_case`, `camelCase` or simply no change at all during serialization.

@@ -32,5 +32,8 @@
   },
   "sails": {
     "isHook": true
+  },
+  "devDependencies": {
+    "chai": "^3.5.0"
   }
 }

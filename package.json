@@ -4,7 +4,9 @@
   "description": "Blueprints to turn a Sails.js API into a JSON API",
   "main": "index.js",
   "scripts": {
-    "test": "cd tests/dummy ; npm test"
+    "test": "npm run-script test-jsonapi ; npm run-script test-unit",
+    "test-jsonapi": "cd tests/dummy ; mv .tmp/localDiskDb.db .tmp/localDiskDb_save.db ; npm test ; mv .tmp/localDiskDb_save.db .tmp/localDiskDb.db",
+    "test-unit": "mocha tests/unit/**/*.test.js"
   },
   "repository": {
     "type": "git",

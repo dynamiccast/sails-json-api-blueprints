@@ -4,7 +4,9 @@
   "description": "Blueprints to turn a Sails.js API into a JSON API",
   "main": "index.js",
   "scripts": {
-    "test": "cd tests/dummy ; npm test"
+    "test": "npm run-script test-jsonapi ; npm run-script test-unit",
+    "test-jsonapi": "cd tests/dummy ; npm test",
+    "test-unit": "mocha tests/unit/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -32,5 +34,10 @@
   },
   "sails": {
     "isHook": true
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "2.4.5",
+    "jsonapi-validator": "1.0.1"
   }
 }

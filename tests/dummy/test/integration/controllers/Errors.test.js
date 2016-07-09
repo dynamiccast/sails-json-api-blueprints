@@ -124,7 +124,7 @@ describe('Error handling', function() {
         .expect({
           "errors": [
             {
-              "detail": "\"minLength\" validation rule failed for input: 'a'\nSpecifically, it threw an error.  Details:\n undefined",
+              "detail": "user.firstName.minLength",
               "source": {
                 "pointer": "data/attributes/first-name"
               }
@@ -135,4 +135,34 @@ describe('Error handling', function() {
     });
   });
 
+  describe("POST /categories with invalid attributes", function() {
+    it('Should return human readable errors from sails-hook-validation', function (done) {
+
+      var categoryToCreate = {
+        'data': {
+          'attributes': {
+            name: "a" // Invalid because minLength is 2
+          },
+          'type':'categories'
+        }
+      };
+
+      request(sails.hooks.http.app)
+        .post('/categories')
+        .send(categoryToCreate)
+        .expect(400)
+        .expect(validateJSONapi)
+        .expect({
+          errors: [
+            {
+              detail: "Minimum length is 2",
+              source: {
+                pointer: "data/attributes/name"
+              }
+            }
+            ]
+        })
+        .end(done);
+    });
+  });
 });

@@ -1,6 +1,6 @@
 {
   "name": "sails-json-api-blueprints",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "Blueprints to turn a Sails.js API into a JSON API",
   "main": "index.js",
   "scripts": {

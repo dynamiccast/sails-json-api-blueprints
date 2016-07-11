@@ -1,0 +1,21 @@
+# context-aware-jsonapi-validator
+
+A fork from https://github.com/elliotttf/jsonapi-validator with the addition of context checking for JSON API.
+In addition to testing JSON to be valid, this module tests given JSON in a specify context.
+
+For example, a JSON API error object, while valid, is not expected when a server receives data to be updated.
+
+# Usage
+
+````
+const jsonApiValidator = require('context-aware-jsonapi-validator');
+
+return jsonApiValidator.isValid(doc, context);
+
+````
+
+`doc` is the document to validate against.
+`context` is the context whithin which the document is suppoed to be valid.
+
+Possible values are **CONTEXT_UPDATE**, **CONTEXT_CREATE** and undefined.
+A context with the value *undefined* validation the document to be a valid JSON API response.

@@ -27,7 +27,7 @@
   "dependencies": {
     "clean-object": "^1.0.2",
     "json-api-serializer": "1.0.0",
-    "jsonapi-validator": "https://github.com/dynamiccast/jsonapi-validator.git#id-should-not-be-required-in-resource",
+    "jsonapi-validator": "^2.0.0",
     "lodash": "3.10.1",
     "path": "^0.12.7",
     "pluralize": "^2.0.0",

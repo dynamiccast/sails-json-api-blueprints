@@ -86,14 +86,13 @@ This will expect sails Model attributes keys to follow the camelCase naming conv
   - [X] PATCH resource
   - [X] Return proper error if any
   - [ ] Relationships
-  - [ ] Compound Document
-  - [ ] Links
   - [ ] Fields
   - [ ] Sorting
   - [ ] Pagination
   - [ ] Filtering
 - Sails integration
   - [X] Allow the use of auto CreatedAt and UpdatedAt (see #3)
+  - [ ] Allow the use of custom CreatedAt and UpdatedAt values (see #25)
   - [ ] Pubsub integration
   - [X] Provide a service to serialize as JSON API for custom endpoints
   - [X] Compatible with waterline data validation

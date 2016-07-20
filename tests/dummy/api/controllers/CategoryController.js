@@ -33,6 +33,12 @@ module.exports = {
     }
 
     return JsonApiService.findRecords(req. res);
-  }
+  },
 
+  update: function(req, res) {
+
+    req.body.data.attributes.name = req.body.data.attributes.name.trim();
+
+    return JsonApiService.updateOneRecord(req, res);
+  }
 };

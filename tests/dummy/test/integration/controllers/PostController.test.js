@@ -60,7 +60,7 @@ describe('PostController', function() {
 
   });
 
-  describe('PATH /posts', function() {
+  describe('PATCH /posts', function() {
     it('Should update created post', function (done) {
 
       var postToUpdate = {

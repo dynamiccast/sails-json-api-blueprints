@@ -20,6 +20,7 @@ Please note the following :
 - Being a set of blueprints this only works if `sails.config.blueprints.rest` is set to true (is it by default)
 - `sails.config.blueprints.pluralize` will be set to true to match the JSON API specification
 - Default responses will be overridden to respond with valid JSON API errors
+- `autoCreatedAt` and `autoUpdatedAt` will not work. See #25 for more information
 
 # Usage
 
@@ -86,14 +87,13 @@ This will expect sails Model attributes keys to follow the camelCase naming conv
   - [X] PATCH resource
   - [X] Return proper error if any
   - [ ] Relationships
-  - [ ] Compound Document
-  - [ ] Links
   - [ ] Fields
   - [ ] Sorting
   - [ ] Pagination
   - [ ] Filtering
 - Sails integration
   - [X] Allow the use of auto CreatedAt and UpdatedAt (see #3)
+  - [ ] Allow the use of custom CreatedAt and UpdatedAt values (see #25)
   - [ ] Pubsub integration
   - [X] Provide a service to serialize as JSON API for custom endpoints
   - [X] Compatible with waterline data validation

@@ -4,7 +4,7 @@
   "description": "Blueprints to turn a Sails.js API into a JSON API",
   "main": "index.js",
   "scripts": {
-    "test": "npm run-script test-jsonapi ; npm run-script test-unit",
+    "test": "npm run-script test-unit && npm run-script test-jsonapi",
     "test-jsonapi": "cd tests/dummy ; npm test",
     "test-unit": "mocha tests/unit/**/*.test.js"
   },
@@ -27,7 +27,7 @@
   "dependencies": {
     "json-api-serializer": "1.1.0",
     "jsonapi-validator": "^2.0.0",
-    "lodash": "3.10.1",
+    "lodash": "^4.13.1",
     "pluralize": "^2.0.0",
     "util": "^0.10.3"
   },

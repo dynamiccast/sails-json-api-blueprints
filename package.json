@@ -25,7 +25,7 @@
   },
   "homepage": "https://github.com/dynamiccast/sails-json-api-blueprints#readme",
   "dependencies": {
-    "json-api-serializer": "1.1.0",
+    "json-api-serializer": "1.1.1",
     "jsonapi-validator": "^2.0.0",
     "lodash": "^4.13.1",
     "pluralize": "^2.0.0",

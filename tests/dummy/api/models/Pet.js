@@ -12,5 +12,8 @@ module.exports = {
       via: 'pets',
       through: 'housepet'
     }
-  }
+  },
+
+  autoCreatedAt: false,
+  autoUpdatedAt: false
 };

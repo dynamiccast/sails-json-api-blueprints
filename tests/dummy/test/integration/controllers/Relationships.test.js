@@ -1,5 +1,5 @@
 var clone = require('clone');
-var request = require('supertest');
+var request = require("supertest-as-promised");
 var JSONAPIValidator = require('jsonapi-validator').Validator;
 
 var util = require('util');
@@ -40,6 +40,101 @@ describe("Has many through relationships", function() {
         .expect(200)
         .expect(validateJSONapi)
         .end(done);
+    });
+  });
+
+  describe("PATCH /pets", function() {
+
+    it("Should add a new relationship to an existing record", function(done) {
+
+      request(sails.hooks.http.app)
+        .post('/pets')
+        .send({
+          "data": {
+            "type": "pets",
+            "attributes": {
+              "name": "Dushi",
+              "color": "black"
+            }
+          }
+        })
+        .expect(201)
+        .expect(validateJSONapi)
+        .then((res) => {
+
+          let petId = res.body.data.id;
+
+          request(sails.hooks.http.app)
+            .post('/houses')
+            .send({
+              "data" : {
+                "type": "houses",
+                "attributes": {
+                  "city": "Paris"
+                }
+              }
+            })
+            .expect(201)
+            .expect(validateJSONapi)
+            .then((res) => {
+
+              let houseId = res.body.data.id;
+
+              request(sails.hooks.http.app)
+                .patch('/pets/' + petId)
+                .send({
+                  "data": {
+                    "id": petId,
+                    "type": "pets",
+                    "attributes": {
+                      "name": "Dushi",
+                      "color": "white"
+                    },
+                    "relationships": {
+                      "homes": {
+                        "data": [{
+                          "type": "houses",
+                          "id": houseId
+                        }]
+                      }
+                    }
+                  }
+                })
+                .expect(200)
+                .expect(validateJSONapi)
+                .expect({
+                  "data": {
+                    "type": "pets",
+                    "id": petId,
+                    "attributes": {
+                      "name": "Dushi",
+                      "color": "white" // value should be updated
+                    },
+                    "relationships": {
+                      "homes": {
+                        "data": [{
+                          "type": "houses",
+                          "id": houseId
+                        }]
+                      }
+                    }
+                  },
+                  "included": [{
+                    "type": "houses",
+                    "id": houseId,
+                    "attributes": {
+                      "city": "Paris"
+                    },
+                    "relationships": {
+                      "pets": {
+                        "data": []
+                      }
+                    }
+                  }]
+                })
+                .end(done);
+            });
+        });
     });
   });
 

@@ -18,5 +18,8 @@ module.exports = {
       via: 'homes',
       through: 'housepet'
     }
-  }
+  },
+
+  autoCreatedAt: false,
+  autoUpdatedAt: false
 };

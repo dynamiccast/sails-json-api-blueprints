@@ -86,7 +86,12 @@ This will expect sails Model attributes keys to follow the camelCase naming conv
   - [X] DELETE resource
   - [X] PATCH resource
   - [X] Return proper error if any
-  - [ ] Relationships
+  - Relationships
+    - [X] One to one
+    - [ ] One way associations
+    - [ ] Many to many
+    - [ ] One to many
+    - [X] Through relationships
   - [ ] Fields
   - [ ] Sorting
   - [ ] Pagination

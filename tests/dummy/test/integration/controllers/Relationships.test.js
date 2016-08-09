@@ -124,11 +124,6 @@ describe("Has many through relationships", function() {
                     "id": houseId,
                     "attributes": {
                       "city": "Paris"
-                    },
-                    "relationships": {
-                      "pets": {
-                        "data": []
-                      }
                     }
                   }]
                 })

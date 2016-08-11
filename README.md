@@ -17,6 +17,7 @@ npm install --save sails-json-api-blueprints
 ````
 
 Please note the following :
+- Default policies (`'*': 'somePolicy'`) will not work by default for update requests. See *Usage:Policies are not applied on custom actions for updates (PATCH method)* for details on how to fix it.
 - Being a set of blueprints this only works if `sails.config.blueprints.rest` is set to true (is it by default)
 - `sails.config.blueprints.pluralize` will be set to true to match the JSON API specification
 - Default responses will be overridden to respond with valid JSON API errors
@@ -46,6 +47,29 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
 - `createRecord` POST /{model}
 - `destroyOneRecord` DELETE /{model}
 - `updateOneRecord` PATCH /{model}/{id}
+
+## Policies are not applied on custom actions for updates (PATCH method)
+
+By default, due to the fact updates are handled with PUT methods and not PATCH methods in sails, *sails-json-api-blueprints* have to inject a route redirecting all incoming PATCH request to the update action. This is transparent for the user, but this means requests do no go though default policies if any.
+
+To fix this, create a new route in `config/routes.js`:
+
+````
+'PATCH /api/:model/:id': {
+  controller: 'App', // replace with an actual controller
+  action: 'update' // This can be any name
+}
+````
+
+Then in `AppController.js`, add the following `update` method:
+
+````
+update: function(req, res) {
+  return JsonApiService.updateMethod(req, res);
+}
+````
+
+This way you are guaranteed incoming requests go through default policies before being redirected to the update blueprint.
 
 ## Data validation
 

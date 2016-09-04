@@ -50,23 +50,18 @@ As shown in [tests/dummy/api/controllers/UserController.js:24](https://github.co
 
 ## Policies are not applied on custom actions for updates (PATCH method)
 
-By default, due to the fact updates are handled with PUT methods and not PATCH methods in sails, *sails-json-api-blueprints* have to inject a route redirecting all incoming PATCH request to the update action. This is transparent for the user, but this means requests do no go though default policies if any.
+By default, due to the fact updates are handled with PUT methods and not PATCH methods in sails,
 
-To fix this, create a new route in `config/routes.js`:
-
-````
-'PATCH /api/:model/:id': {
-  controller: 'App', // replace with an actual controller
-  action: 'update' // This can be any name
-}
-````
-
-Then in `AppController.js`, add the following `update` method:
+To fix this, first we create a new route in `config/routes.js` for each model to be patched; replace <model1> with the model name:
 
 ````
-update: function(req, res) {
-  return JsonApiService.updateMethod(req, res);
-}
+'PATCH /api/<model1>/:id': '<Model1>Controller.update',
+````
+
+Then we must add PATCH to the list of methods in `config/cors.js`:
+
+````
+  methods: 'GET, POST, PUT, DELETE, OPTIONS, HEAD, PATCH',
 ````
 
 This way you are guaranteed incoming requests go through default policies before being redirected to the update blueprint.

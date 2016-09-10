@@ -107,9 +107,9 @@ This will expect sails Model attributes keys to follow the camelCase naming conv
   - [X] Return proper error if any
   - Relationships
     - [X] One to one
-    - [ ] One way associations
-    - [ ] Many to many
-    - [ ] One to many
+    - [X] One way associations
+    - [X] Many to many
+    - [X] One to many
     - [X] Through relationships
   - [ ] Fields
   - [ ] Sorting

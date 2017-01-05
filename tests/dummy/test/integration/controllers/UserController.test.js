@@ -149,10 +149,117 @@ describe('UserController', function() {
     });
   });
 
-  describe('Delete one user DELETE /users/1', function() {
+  describe('Add third user POST /users', function() {
+
+    it('Should return created user', function (done) {
+
+      var userToCreate = {
+        'data': {
+          'attributes': {
+            'email': 'test3@jsonapi.com',
+            'first-name':'Test3',
+            'last-name':'Jsonapi2'
+          },
+          'type':'users'
+        }
+      };
+
+      userCreated = userToCreate;
+      userCreated.data.id = "3";
+
+      request(sails.hooks.http.app)
+        .post('/users')
+        .send(userToCreate)
+        .expect(201)
+        .expect(validateJSONapi)
+        .expect(userCreated)
+        .end(done)
+    });
+  });
+
+  describe('Find user by property GET /users?filter[:prop]=value', function() {
+    it('Should return Test2 user (look-up by first-name)', function (done) {
+      request(sails.hooks.http.app)
+        .get('/users?filter[first-name]=Test2')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          'data': [{
+            'id': "2",
+            'type': 'users',
+            'attributes': {
+              'email': 'test2@jsonapi.com',
+              'first-name':'Test2',
+              'last-name':'Jsonapi2'
+            }
+          }]})
+        .end(done)
+    });
+    it('Should return Test2 user (look-up by email)', function (done) {
+      request(sails.hooks.http.app)
+        .get('/users?filter[last-name]=NoOne')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          'data': []
+        })
+        .end(done)
+    });
+    it('Should return an empty array', function (done) {
+      request(sails.hooks.http.app)
+        .get('/users?filter[last-name]=NoOne')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          'data': []
+        })
+        .end(done)
+    });
+    it('Should return 2 users (look-up by last-name=Jsonapi2)', function (done) {
+      request(sails.hooks.http.app)
+        .get('/users?filter[last-name]=Jsonapi2')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          'data': [{
+            'id': "2",
+            'type': 'users',
+            'attributes': {
+              'email': 'test2@jsonapi.com',
+              'first-name':'Test2',
+              'last-name':'Jsonapi2'
+            }
+          },{
+            'id': "3",
+            'type': 'users',
+            'attributes': {
+              'email': 'test3@jsonapi.com',
+              'first-name':'Test3',
+              'last-name':'Jsonapi2'
+            }
+          }]
+        })
+        .end(done)
+    });
+  });
+
+  describe('Delete one user DELETE /users/2', function() {
     it('Should return nothing', function (done) {
       request(sails.hooks.http.app)
         .delete('/users/2')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          'meta': {}
+        })
+        .end(done)
+    });
+  })
+
+  describe('Delete one user DELETE /users/3', function() {
+    it('Should return nothing', function (done) {
+      request(sails.hooks.http.app)
+        .delete('/users/3')
         .expect(200)
         .expect(validateJSONapi)
         .expect({

@@ -197,12 +197,19 @@ describe('UserController', function() {
     });
     it('Should return Test2 user (look-up by email)', function (done) {
       request(sails.hooks.http.app)
-        .get('/users?filter[last-name]=NoOne')
+        .get('/users?filter[email]=test2@jsonapi.com')
         .expect(200)
         .expect(validateJSONapi)
         .expect({
-          'data': []
-        })
+          'data': [{
+            'id': "2",
+            'type': 'users',
+            'attributes': {
+              'email': 'test2@jsonapi.com',
+              'first-name':'Test2',
+              'last-name':'Jsonapi2'
+            }
+        }]})
         .end(done)
     });
     it('Should return an empty array', function (done) {

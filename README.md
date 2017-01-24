@@ -114,7 +114,7 @@ This will expect sails Model attributes keys to follow the camelCase naming conv
   - [ ] Fields
   - [ ] Sorting
   - [ ] Pagination
-  - [ ] Filtering
+  - [X] Filtering
 - Sails integration
   - [X] Allow the use of auto CreatedAt and UpdatedAt (see #3)
   - [ ] Allow the use of custom CreatedAt and UpdatedAt values (see #25)
@@ -129,7 +129,7 @@ This will expect sails Model attributes keys to follow the camelCase naming conv
 
 Simply run `npm test`
 
-Tests expect the database to be empty. Local disk is used in the dummy app and can be deleted with `rm tests/dummy/.tmp/localDiskDb.db`.
+Running the tests will reset the local disk database located at `.tmp/localDiskDb.db`. All data will be erased and fresh records will be added as the tests are run.
 
 # Thanks
 

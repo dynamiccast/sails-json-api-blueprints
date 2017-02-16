@@ -1,6 +1,7 @@
 var clone = require('clone');
 var request = require("supertest-as-promised");
 var JSONAPIValidator = require('jsonapi-validator').Validator;
+const assert = require('assert');
 
 var util = require('util');
 
@@ -155,5 +156,40 @@ describe("Has many through relationships", function() {
         .end(done);
     });
   });
+
+  describe("GET /wives", function () {
+    before("Populate some data", done => {
+      Husband.create({}).then((husband) => {
+        return Wife.create({
+          maidenName: 'Doe',
+          husband: husband
+        });
+      }).then(() => done());
+    });
+
+    it("Should return wife without her husband", done => {
+
+      request(sails.hooks.http.app)
+        .get('/wives')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect(({body}) => {
+          assert((typeof body.included) === "undefined", "there should be nothing included by default");
+        })
+        .end(done);
+    })
+
+    it("Should return wife and her husband", done => {
+
+      request(sails.hooks.http.app)
+        .get('/wives?include[]=husband')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect(({body}) => {
+          assert(body.included.every(includedRecord => includedRecord.type === 'husbands'), "only husbands should be included");
+        })
+        .end(done);
+    })
+  })
 
 });

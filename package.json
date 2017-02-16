@@ -1,6 +1,6 @@
 {
   "name": "sails-json-api-blueprints",
-  "version": "0.13.1",
+  "version": "0.14.0",
   "description": "Blueprints to turn a Sails.js API into a JSON API",
   "main": "index.js",
   "scripts": {
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "mocha": "2.4.5",
-    "jsonapi-validator": "1.0.1"
+    "jsonapi-validator": "1.0.1",
+    "mocha": "2.4.5"
   }
 }

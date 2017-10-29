@@ -156,4 +156,59 @@ describe("Has many through relationships", function() {
     });
   });
 
+  describe("GET /husbands/:parentid/wife", function() {
+    let husband_id = null;
+
+    before("Populate some data", function(done) {
+      Husband.create({})
+        .then((husband) => {
+          husband_id = husband.id;
+
+          return Wife.create({
+            maidenName: 'Doe',
+            husband: husband
+          });
+        })
+        .then(() => done());
+    });
+
+    it("Should return the husband's wife", function(done) {
+      request(sails.hooks.http.app)
+        .get(`/husbands/${husband_id}}/wife`)
+        .expect(200)
+        .expect(validateJSONapi)
+        .end(done);
+    });
+  });
+
+  describe("GET /husbands/:parentid/wife/:id", function() {
+    let husband_id = null;
+    let wife_id    = null;
+
+    before("Populate some data", function(done) {
+      Husband.create({})
+        .then((husband) => {
+          husband_id = husband.id;
+
+          Wife.create({
+            maidenName: 'Doe',
+            husband: husband
+          })
+          .then((wife) => {
+            wife_id = wife.id;
+
+            done();
+          });
+        });
+    });
+
+    it("Should return the husband's wife", function(done) {
+      request(sails.hooks.http.app)
+        .get(`/husbands/${husband_id}}/wife/${wife_id}`)
+        .expect(200)
+        .expect(validateJSONapi)
+        .end(done);
+    });
+  });
+
 });

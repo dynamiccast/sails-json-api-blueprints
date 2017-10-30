@@ -12,5 +12,8 @@ module.exports = {
       model: 'wife',
       unique: true
     }
-  }
+  },
+
+  autoUpdatedAt : false,
+  autoCreatedAt : false
 };

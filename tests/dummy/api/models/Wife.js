@@ -15,5 +15,8 @@ module.exports = {
       collection: 'husband',
       via: 'wife'
     }
-  }
+  },
+
+  autoUpdatedAt : false,
+  autoCreatedAt : false
 };

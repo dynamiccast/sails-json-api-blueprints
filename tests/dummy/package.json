@@ -41,7 +41,7 @@
     "type": "git",
     "url": "git+https://github.com/dynamiccast/sails-json-api-blueprints.git"
   },
-  "author": "Olivier Berthonneau <olivier.berthonneau@gmail.com>",
+  "author": "Olivier Berthonneau <berthonneau.olivier@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dynamiccast/sails-json-api-blueprints/issues"

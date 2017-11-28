@@ -161,6 +161,7 @@ describe("Has many through relationships", function() {
     before("Populate some data", done => {
       Husband.create({}).then((husband) => {
         return Wife.create({
+          id: "2",
           maidenName: 'Doe',
           husband: husband
         });
@@ -183,6 +184,30 @@ describe("Has many through relationships", function() {
 
       request(sails.hooks.http.app)
         .get('/wives?include[]=husband')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect(({body}) => {
+          assert(body.included.every(includedRecord => includedRecord.type === 'husbands'), "only husbands should be included");
+        })
+        .end(done);
+    })
+
+    it("Should find one wife without her husband", done => {
+
+      request(sails.hooks.http.app)
+        .get('/wives/2')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect(({body}) => {
+          assert((typeof body.included) === "undefined", "there should be nothing included by default");
+        })
+        .end(done);
+    })
+
+    it("Should find one wife and her husband", done => {
+
+      request(sails.hooks.http.app)
+        .get('/wives/2?include[]=husband')
         .expect(200)
         .expect(validateJSONapi)
         .expect(({body}) => {

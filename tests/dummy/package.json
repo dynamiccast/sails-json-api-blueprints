@@ -24,6 +24,7 @@
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
     "sails-hook-validation": "^0.4.6",
+    "sails-json-api-blueprints": "file:../../",
     "supertest-as-promised": "^3.2.0"
   },
   "devDependencies": {
@@ -41,7 +42,7 @@
     "type": "git",
     "url": "git+https://github.com/dynamiccast/sails-json-api-blueprints.git"
   },
-  "author": "Olivier Berthonneau <olivier.berthonneau@gmail.com>",
+  "author": "Olivier Berthonneau <berthonneau.olivier@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dynamiccast/sails-json-api-blueprints/issues"

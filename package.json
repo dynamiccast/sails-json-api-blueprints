@@ -1,6 +1,6 @@
 {
   "name": "sails-json-api-blueprints",
-  "version": "0.14.0",
+  "version": "0.15.0",
   "description": "Blueprints to turn a Sails.js API into a JSON API",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,7 @@
     "json-api",
     "ember.js"
   ],
-  "author": "Olivier Berthonneau <olivier.berthonneau@gmail.com>",
+  "author": "Olivier Berthonneau <berthonneau.olivier@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dynamiccast/sails-json-api-blueprints/issues"

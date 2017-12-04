@@ -217,4 +217,115 @@ describe("Has many through relationships", function() {
     })
   })
 
+  describe("GET /husbands/:parentid/wife, GET /wives/:parentid/husband", function() {
+    let husband_id = null;
+    let wife_id    = null;
+
+    before("Populate some data", function(done) {
+      Husband.create({})
+        .then((husband) => {
+          husband_id = husband.id;
+
+          Wife.create({
+            maidenName: 'Doe',
+            husband: husband
+          })
+          .then((wife) => {
+            wife_id = wife.id;
+
+            done();
+          });
+        })
+    });
+
+    it("Should return the husband's wife", function(done) {
+      request(sails.hooks.http.app)
+        .get(`/husbands/${husband_id}/wife`)
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          data : {
+            type       : "wives",
+            id         : `${wife_id}`,
+            attributes : {
+              "maiden-name" : "Doe"
+            }
+          }
+        })
+        .end(done);
+    });
+
+    it("Should return the wife's husbands", function(done) {
+      request(sails.hooks.http.app)
+        .get(`/wives/${wife_id}/husband`)
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          data : [{
+            type       : "husbands",
+            id         : `${husband_id}`,
+            attributes : {
+              wife : `${wife_id}`
+            }
+          }]
+        })
+        .end(done);
+    });
+  });
+
+  describe("GET /husbands/:parentid/wife/:id, GET /wives/:parentid/husband/:id", function() {
+    let husband_id = null;
+    let wife_id    = null;
+
+    before("Populate some data", function(done) {
+      Husband.create({})
+        .then((husband) => {
+          husband_id = husband.id;
+
+          Wife.create({
+            maidenName: 'Doe',
+            husband: husband
+          })
+          .then((wife) => {
+            wife_id = wife.id;
+
+            done();
+          });
+        });
+    });
+
+    it("Should return the husband's wife", function(done) {
+      request(sails.hooks.http.app)
+        .get(`/husbands/${husband_id}/wife/${wife_id}`)
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          data : {
+            type       : "wives",
+            id         : `${wife_id}`,
+            attributes : {
+              "maiden-name" : "Doe"
+            }
+          }
+        })
+        .end(done);
+    });
+
+    it("Should return the wife's husbands", function(done) {
+      request(sails.hooks.http.app)
+        .get(`/wives/${wife_id}/husband/${husband_id}`)
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          data : [{
+            type       : "husbands",
+            id         : `${husband_id}`,
+            attributes : {
+              wife : `${wife_id}`
+            }
+          }]
+        })
+        .end(done);
+    });
+  });
 });

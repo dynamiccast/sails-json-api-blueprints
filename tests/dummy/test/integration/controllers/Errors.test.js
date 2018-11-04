@@ -83,6 +83,25 @@ describe('Error handling', function() {
     });
   });
 
+  describe('GET categories?unauthorized=true', function() {
+    it('Should return 401', function(done) {
+      request(sails.hooks.http.app)
+        .get('/categories?unauthorized=true')
+        .expect(401)
+        .expect(validateJSONapi)
+        .expect({
+          'errors': [
+            {
+              status: "401",
+              title: 'Unauthorized',
+              detail: "You don't wanna do that"
+            }
+          ]
+        })
+        .end(done);
+    });
+  });
+
   describe('GET categories?forbidden=true', function() {
     it('Should return 403', function(done) {
       request(sails.hooks.http.app)

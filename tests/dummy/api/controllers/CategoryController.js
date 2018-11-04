@@ -24,6 +24,11 @@ module.exports = {
       return res.badRequest("Something is rotten in the state of denmark");
     }
 
+    if (req.allParams()['unauthorized'] === "true") {
+      sails.log.debug('hello this is not autorized');
+      return res.unauthorized("You don't wanna do that");
+    }
+
     if (req.allParams()['forbidden'] === "true") {
       return res.forbidden("You don't wanna do that");
     }

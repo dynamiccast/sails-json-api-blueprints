@@ -256,6 +256,66 @@ describe("UserController", function() {
         .end(done);
     });
   });
+  describe('Find user by property and sails ORM filters GET /users?filter[:prop]={"someOperator": value}', function() {
+    it("Should return 3 users (look-up by email starting with 'test')", function(done) {
+      request(sails.hooks.http.app)
+        .get('/users?filter[email]={"startsWith": "test"}')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          data: [
+            {
+              id: "1",
+              type: "users",
+              attributes: {
+                email: "test@jsonapi.com",
+                "first-name": "Test",
+                "last-name": "Jsonapi"
+              }
+            },
+            {
+              id: "2",
+              type: "users",
+              attributes: {
+                email: "test2@jsonapi.com",
+                "first-name": "Test2",
+                "last-name": "Jsonapi2"
+              }
+            },
+            {
+              id: "3",
+              type: "users",
+              attributes: {
+                email: "test3@jsonapi.com",
+                "first-name": "Test3",
+                "last-name": "Jsonapi2"
+              }
+            }
+          ]
+        })
+        .end(done);
+    });
+    it("should return 1 users (look-up by first-name finishing by 2)", function(done) {
+      request(sails.hooks.http.app)
+        .get('/users?filter["first-name"]={"endsWith": "2"}')
+        .expect(200)
+        .expect(validateJSONapi)
+        .expect({
+          data: [
+            {
+              id: "2",
+              type: "users",
+              attributes: {
+                email: "test2@jsonapi.com",
+                "first-name": "Test2",
+                "last-name": "Jsonapi2"
+              }
+            }
+          ]
+        })
+        .end(done);
+    });
+  });
 
   describe("Delete one user DELETE /users/2", function() {
     it("Should return nothing", function(done) {

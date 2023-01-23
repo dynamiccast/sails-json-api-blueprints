@@ -28,7 +28,7 @@
     "supertest-as-promised": "^3.2.0"
   },
   "devDependencies": {
-    "supertest": "^1.2.0",
+    "supertest": "^6.3.3",
     "mocha": "2.4.5",
     "jsonapi-validator": "1.0.1"
   },
